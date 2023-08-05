@@ -7,14 +7,14 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface todoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTodo(todo : Todo)
+    suspend fun insertTodo(todo : Todo)
 
     @Delete
-    fun deleteTodo(todo : Todo)
+    suspend fun deleteTodo(todo : Todo)
 
     @Query("SELECT * from todos")
     fun getAllTodos() : Flow<List<Todo>>
 
     @Query("SELECT * from todos WHERE id = :id")
-    fun getTodoById(id : Int) : Todo
+    suspend fun getTodoById(id : Int) : Todo
 }

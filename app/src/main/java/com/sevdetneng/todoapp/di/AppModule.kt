@@ -23,7 +23,7 @@ object AppModule {
         context,
         TodoDatabase::class.java,
         "todo_db"
-    ).build()
+    ).fallbackToDestructiveMigration().build()
 
     @Singleton
     @Provides

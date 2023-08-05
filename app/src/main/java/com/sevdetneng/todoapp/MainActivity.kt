@@ -10,9 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.sevdetneng.todoapp.navigation.Navigation
+import com.sevdetneng.todoapp.screens.AddTodoScreen
 import com.sevdetneng.todoapp.screens.TodoListScreen
 import com.sevdetneng.todoapp.ui.theme.TodoAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    TodoListScreen()
+                    Navigation()
                 }
             }
         }

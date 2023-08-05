@@ -1,5 +1,6 @@
 package com.sevdetneng.todoapp.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -11,10 +12,14 @@ import androidx.compose.ui.unit.dp
 import com.sevdetneng.todoapp.model.Todo
 
 @Composable
-fun TodoRow(todo : Todo){
+fun TodoRow(todo : Todo,
+            onDeleteClick : (Todo) -> Unit,
+            onDoneChange : (Todo) -> Unit,
+){
     Card(modifier = Modifier
         .fillMaxWidth()
-        .height(150.dp),
+        .height(150.dp)
+        .padding(top=8.dp, start = 16.dp, end = 16.dp),
     backgroundColor = Color.DarkGray) {
         Column(modifier = Modifier
             .fillMaxSize()
@@ -24,11 +29,17 @@ fun TodoRow(todo : Todo){
                 Row(){
                     Text(todo.title)
                     Spacer(Modifier.width(8.dp))
-                    Checkbox(checked = false, onCheckedChange = { } , modifier =
+                    Checkbox(checked = todo.isDone, onCheckedChange = {
+                       onDoneChange(todo)
+                    } , modifier =
                     Modifier.size(25.dp))
                 }
                 
-                Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete Todo")
+                Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete Todo",
+                    modifier = Modifier.clickable {
+                        onDeleteClick(todo)
+                    }
+                )
             }
             Spacer(Modifier.height(8.dp))
             Text(todo.description)
