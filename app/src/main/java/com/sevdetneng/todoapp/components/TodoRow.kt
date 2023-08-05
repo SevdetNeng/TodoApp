@@ -15,11 +15,15 @@ import com.sevdetneng.todoapp.model.Todo
 fun TodoRow(todo : Todo,
             onDeleteClick : (Todo) -> Unit,
             onDoneChange : (Todo) -> Unit,
+            onTodoClick : (Todo) -> Unit
 ){
     Card(modifier = Modifier
         .fillMaxWidth()
         .height(150.dp)
-        .padding(top=8.dp, start = 16.dp, end = 16.dp),
+        .padding(top=8.dp, start = 16.dp, end = 16.dp)
+        .clickable {
+                  onTodoClick(todo)
+        },
     backgroundColor = Color.DarkGray) {
         Column(modifier = Modifier
             .fillMaxSize()

@@ -41,6 +41,8 @@ fun TodoListScreen(navController: NavController){
                 }, onDoneChange = {
                     val newTodo = todo.copy(isDone = !todo.isDone)
                     todoListViewModel.addTodo(newTodo)
+                }, onTodoClick = {
+                    navController.navigate(Screens.TodoEdit.name + "/${todo.id}")
                 })
             }
         }

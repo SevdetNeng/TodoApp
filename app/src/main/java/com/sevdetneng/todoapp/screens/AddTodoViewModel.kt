@@ -22,6 +22,8 @@ class AddTodoViewModel @Inject constructor(private val todoRepository: TodoRepos
         viewModelScope.launch {
             todoRepository.addTodo(todo)
         }
+        todoTitleState.value=""
+        todoDescriptionState.value=""
 
     }
 
