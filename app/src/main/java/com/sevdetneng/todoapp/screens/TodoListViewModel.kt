@@ -2,6 +2,7 @@ package com.sevdetneng.todoapp.screens
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sevdetneng.todoapp.model.Todo
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class TodoListViewModel @Inject constructor(private val todoRepository: TodoRepository) : ViewModel() {
     private val _todos = MutableStateFlow<List<Todo>>(emptyList())
     val todos = _todos.asStateFlow()
+    val filterState : MutableState<String> = mutableStateOf("all")
 
     init {
         viewModelScope.launch(Dispatchers.IO) {

@@ -51,6 +51,7 @@ fun TodoEditScreen(navController: NavController,id : Int?){
         Button(onClick = {
             val newTodo = todoEditViewModel.todo.copy(title = title.value, description = description.value)
             todoEditViewModel.updateTodo(newTodo)
+            navController.popBackStack()
         }){
             Text("Save")
         }
